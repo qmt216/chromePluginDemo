@@ -1,3 +1,6 @@
+if (chrome.downloads.setShelfEnabled)
+chrome.downloads.setShelfEnabled(false);
+
 // Copyright 2018 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -20,9 +23,17 @@ chrome.declarativeContent.onPageChanged.addRules([
 ]);
 // });
 
-//下载
-// var url = 'https://agent.jlpay.com/download/download';
-// const opstions = { url };
-// chrome.downloads.download(opstions, (value) => {
-//   console.log(value);
-// });
+chrome.downloads.onChanged.addListener((item)=>{
+  debugger;
+  console.log('onChanged', JSON.stringify(item));
+  chrome.downloads.search(
+    {
+      mime:'zip'
+    },
+    (items)=>{
+      console.log("downloads", JSON.stringify(items));
+    }
+  );
+
+})
+
