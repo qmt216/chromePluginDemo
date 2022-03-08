@@ -11,22 +11,30 @@ function refashPage() {
   let afterToken = $('input[name=jwtToken][type=hidden]').val();
   console.log('afterToken', afterToken);
   if (preToken === afterToken || afterToken != '') {
-    sendToken(afterToken);
+    // sendToken(afterToken);
   }
   //跳转我的利润页
   $('#profit-agent').find('.J_menuItem').eq(0).click();
-  
+
+  //跳转报表下载
   setTimeout(()=>{
-    //触发下载
-    $(window.frames["iframe10"].document).find("#toolbar .ul-list .item").eq(0).click();
-    //跳转报表下载
+    $('#export-down').find('.J_menuItem').eq(0).click();
     setTimeout(()=>{
-      $('#export-down').find('.J_menuItem').eq(0).click();
-      setTimeout(()=>{
-        $(window.frames["iframe13-17"].document).find("#data_table .RoleOfA.table-btn-primary").eq(0).click();
-      }, 10000);
-    },10000);
-  }, 10000);
+      $(window.frames["iframe13-17"].document).find("#data_table .RoleOfA.table-btn-primary").eq(0).click();
+    }, 10000);
+  },10000);
+
+  // setTimeout(()=>{
+  //   //触发下载
+  //   $(window.frames["iframe10"].document).find("#toolbar .ul-list .item").eq(0).click();
+  //   //跳转报表下载
+  //   setTimeout(()=>{
+  //     $('#export-down').find('.J_menuItem').eq(0).click();
+  //     setTimeout(()=>{
+  //       $(window.frames["iframe13-17"].document).find("#data_table .RoleOfA.table-btn-primary").eq(0).click();
+  //     }, 10000);
+  //   },10000);
+  // }, 10000);
 }
 
 function sendToken(token) {
