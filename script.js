@@ -35,9 +35,8 @@ function refreshPage() {
             setTimeout(() => {
                 $('#export-down').find('.J_menuItem').eq(0).click();
                 setTimeout(() => {
-                    debugger;
                     $(window.frames["iframe13-17"].document).find("#data_table td:contains('posp交易流水导出')")
-                        .siblings('.RoleOfA.table-btn-primary').eq(0).click();
+                        .eq(0).parent('tr').find('.RoleOfA.table-btn-primary').eq(0).click();
                     taskTag = false;
                 }, 10000);
             }, 10000);
