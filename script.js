@@ -11,7 +11,10 @@ setInterval(function () {
     var refreshMin = new Date().getMinutes();
     var refreshSec = new Date().getSeconds();
     //每天2点
-    if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
+    // if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
+    //     taskTag = true;
+    // }
+    if (refreshHours === 9 && refreshMin === 35 && refreshSec === 0) {
         taskTag = true;
     }
 }, 1000);
