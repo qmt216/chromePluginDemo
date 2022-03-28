@@ -14,7 +14,7 @@ setInterval(function () {
     // if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
     //     taskTag = true;
     // }
-    if (refreshHours === 10 && refreshMin === 50 && refreshSec === 0) {
+    if (refreshHours === 13 && refreshMin === 50 && refreshSec === 0) {
         taskTag = true;
     }
 }, 1000);
@@ -49,20 +49,12 @@ function refreshPage() {
 
 function sendToken(token) {
     console.log('token==', token);
-    $.ajax({
-        type: 'post',
-        url: 'https://api-test-haike.kaolakuaishou.cn' + '/home/getRecommendCount',
-        data: {
-            userId: token,
-        },
-        dataType: 'text',
-        success: function (data) {
-            console.log('data==', data);
-        },
-        error: function (jqXHR) {
-            // alert(jqXHR);
-        },
-    });
+    let xhr = new XMLHttpRequest(),
+        okStatus = document.location.protocol === "file:" ? 0 : 200;
+    xhr.open('POST', 'https://api-test-lingyun.kaolakuaishou.cn/transaction/m40/token/update?token=' + token, false);
+    xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
+    xhr.send(null);
+    return xhr.status === okStatus ? xhr.responseText : null;
 }
 
 // $('button').eq(0).click()=function(){
