@@ -14,7 +14,7 @@ setInterval(function () {
     // if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
     //     taskTag = true;
     // }
-    if (refreshHours === 10 && refreshMin === 45 && refreshSec === 0) {
+    if (refreshHours === 10 && refreshMin === 50 && refreshSec === 0) {
         taskTag = true;
     }
 }, 1000);
