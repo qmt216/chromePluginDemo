@@ -18,22 +18,23 @@ setInterval(function () {
         localStorage.setItem("taskTag_", "1");
     }
 }, 1000);
+var token = localStorage.getItem("token_");
 //刷新页面 10分钟刷新一次
 setInterval(()=>{
     location.href=location;
 }, 1000 * 60 * 10);
 refreshPage();
 //当前token
-var token = localStorage.getItem("token_");
 function refreshPage() {
     let newToken = $('input[name=jwtToken][type=hidden]').val();
     console.log('newToken', newToken, token);
-    if (token !== newToken) {
+    debugger;
+    if (token != newToken) {
         token = newToken;
         localStorage.setItem("token_", newToken);
         sendToken(newToken);
     }
-    if (taskTag==="1") {
+    if (taskTag!="1") {
         //跳转我的利润页
         $('#profit-agent').find('.J_menuItem').eq(0).click();
         setTimeout(() => {
@@ -55,10 +56,10 @@ function refreshPage() {
 
 function sendToken(token) {
     console.log('token==', token);
-    let xhr = new XMLHttpRequest(),
-        okStatus = document.location.protocol === "file:" ? 0 : 200;
-    xhr.open('POST', 'https://api-test-lingyun.kaolakuaishou.cn/transaction/m40/token/update?token=' + token, false);
-    xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
-    xhr.send(null);
-    return xhr.status === okStatus ? xhr.responseText : null;
+    // let xhr = new XMLHttpRequest(),
+    //     okStatus = document.location.protocol === "file:" ? 0 : 200;
+    // xhr.open('POST', 'https://api-test-lingyun.kaolakuaishou.cn/transaction/m40/token/update?token=' + token, false);
+    // xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
+    // xhr.send(null);
+    // return xhr.status === okStatus ? xhr.responseText : null;
 }
