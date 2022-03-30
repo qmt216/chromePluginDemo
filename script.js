@@ -19,12 +19,13 @@ setInterval(function () {
     }
 }, 1000);
 //刷新页面 10分钟刷新一次
-setInterval(refreshPage, 1000 * 60 * 10);
+setInterval(()=>{
+    location.href=location;
+}, 1000 * 60 * 10);
 refreshPage();
 //当前token
 var token = localStorage.getItem("token_");
 function refreshPage() {
-    location.href=location;
     let newToken = $('input[name=jwtToken][type=hidden]').val();
     console.log('newToken', newToken, token);
     if (token !== newToken) {
