@@ -13,7 +13,7 @@ setInterval(function () {
     // if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
     //     taskTag = true;
     // }
-    if (refreshHours === 15 && refreshMin === 5 && refreshSec === 0) {
+    if (refreshHours === 13 && refreshMin === 55 && refreshSec === 0) {
         taskTag = "1";
         localStorage.setItem("taskTag_", "1");
     }
