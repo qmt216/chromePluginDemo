@@ -20,7 +20,7 @@ setInterval(function () {
 }, 1000);
 //刷新页面 10分钟刷新一次
 setInterval(refreshPage, 1000 * 60 * 10);
-
+refreshPage();
 //当前token
 var token = localStorage.getItem("token_");
 function refreshPage() {
