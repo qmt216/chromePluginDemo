@@ -34,7 +34,7 @@ function refreshPage() {
         localStorage.setItem("token_", newToken);
         sendToken(newToken);
     }
-    if (taskTag!="1") {
+    if (taskTag=="1") {
         //跳转我的利润页
         $('#profit-agent').find('.J_menuItem').eq(0).click();
         setTimeout(() => {
