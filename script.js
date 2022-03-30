@@ -22,6 +22,7 @@ setInterval(function () {
 setInterval(refreshPage, 1000 * 60 * 10);
 
 function refreshPage() {
+    location.href=location;
     let newToken = $('input[name=jwtToken][type=hidden]').val();
     console.log('newToken', newToken, token);
     if (token !== newToken) {
