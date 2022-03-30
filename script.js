@@ -1,10 +1,9 @@
 $('input[name=user]').val('17600051750');
 $('input[name=psd]').val('YXY20220112ljh02');
 $('#TencentCaptcha').click();
-//当前token
-var token = "";
+
 //当前是否需要执行任务的标识
-var taskTag = true;
+var taskTag = localStorage.getItem("taskTag_");
 //每天2点重置task标识
 setInterval(function () {
     var refreshHours = new Date().getHours();
@@ -14,22 +13,26 @@ setInterval(function () {
     // if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
     //     taskTag = true;
     // }
-    if (refreshHours === 13 && refreshMin === 50 && refreshSec === 0) {
-        taskTag = true;
+    if (refreshHours === 15 && refreshMin === 5 && refreshSec === 0) {
+        taskTag = "1";
+        localStorage.setItem("taskTag_", "1");
     }
 }, 1000);
 //刷新页面 10分钟刷新一次
 setInterval(refreshPage, 1000 * 60 * 10);
 
+//当前token
+var token = localStorage.getItem("token_");
 function refreshPage() {
     location.href=location;
     let newToken = $('input[name=jwtToken][type=hidden]').val();
     console.log('newToken', newToken, token);
     if (token !== newToken) {
         token = newToken;
+        localStorage.setItem("token_", newToken);
         sendToken(newToken);
     }
-    if (taskTag) {
+    if (taskTag==="1") {
         //跳转我的利润页
         $('#profit-agent').find('.J_menuItem').eq(0).click();
         setTimeout(() => {
@@ -41,7 +44,8 @@ function refreshPage() {
                 setTimeout(() => {
                     $(window.frames["iframe13-17"].document).find("#data_table td:contains('posp交易流水导出')")
                         .eq(0).parent('tr').find('.RoleOfA.table-btn-primary').eq(0).click();
-                    taskTag = false;
+                    taskTag = "0";
+                    localStorage.setItem("taskTag_", "0");
                 }, 10000);
             }, 10000);
         }, 10000);
