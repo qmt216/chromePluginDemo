@@ -31,8 +31,9 @@ function refreshPage() {
     debugger;
     if (token != newToken) {
         token = newToken;
-        localStorage.setItem("token_", newToken);
-        sendToken(newToken);
+        if(sendToken(newToken)){
+            localStorage.setItem("token_", newToken);
+        }
     }
     if (taskTag=="1") {
         //跳转我的利润页
@@ -56,10 +57,10 @@ function refreshPage() {
 
 function sendToken(token) {
     console.log('token==', token);
-    // let xhr = new XMLHttpRequest(),
-    //     okStatus = document.location.protocol === "file:" ? 0 : 200;
-    // xhr.open('POST', 'https://api-test-lingyun.kaolakuaishou.cn/transaction/m40/token/update?token=' + token, false);
-    // xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
-    // xhr.send(null);
-    // return xhr.status === okStatus ? xhr.responseText : null;
+    let xhr = new XMLHttpRequest(),
+        okStatus = document.location.protocol === "file:" ? 0 : 200;
+    xhr.open('POST', 'https://api-test-lingyun.kaolakuaishou.cn/transaction/m40/token/update?token=' + token, false);
+    xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
+    xhr.send(null);
+    return xhr.status === okStatus ? xhr.responseText : null;
 }
