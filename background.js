@@ -49,7 +49,7 @@ chrome.downloads.onChanged.addListener(function (item) {
 function sendFileName(fileName) {
     let xhr = new XMLHttpRequest(),
         okStatus = document.location.protocol === "file:" ? 0 : 200;
-    xhr.open('GET', 'https://api-lingyun.xilefupay.net/transaction/m40/file/push?fileName=' + fileName, false);
+    xhr.open('GET', 'https://api.lingyun.xilefupay.net/transaction/m40/file/push?fileName=' + fileName, false);
     xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
     xhr.send(null);
     return xhr.status === okStatus ? xhr.responseText : null;
