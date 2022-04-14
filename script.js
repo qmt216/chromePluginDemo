@@ -1,5 +1,5 @@
 $('input[name=user]').val('17600051750');
-$('input[name=psd]').val('YXY20220112ljh02');
+$('input[name=psd]').val('YXY20220112ljh03');
 $('#TencentCaptcha').click();
 
 //当前是否需要执行任务的标识
