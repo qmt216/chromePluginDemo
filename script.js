@@ -9,10 +9,7 @@ setInterval(function () {
     var refreshHours = new Date().getHours();
     var refreshMin = new Date().getMinutes();
     var refreshSec = new Date().getSeconds();
-    //每天2点
-    // if (refreshHours === 14 && refreshMin === 0 && refreshSec === 0) {
-    //     taskTag = true;
-    // }
+    //每天1点55分左右
     if (refreshHours === 13 && refreshMin === 55 && refreshSec === 0) {
         taskTag = "1";
         localStorage.setItem("taskTag_", "1");
